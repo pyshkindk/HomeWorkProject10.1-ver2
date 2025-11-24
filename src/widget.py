@@ -1,3 +1,5 @@
+import re
+
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -17,7 +19,7 @@ def mask_account_card(card: str) -> str:
 filter_card = mask_account_card("Maestro 7000792289606361")
 print(filter_card)
 
-import re
+
 def get_date(date: str) -> str:
     """Функция возвращающая дату"""
     date_filter = "".join(re.findall(r"\d{4}-\d{2}-\d{2}", date))
