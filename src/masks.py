@@ -6,8 +6,6 @@ def get_mask_card_number(card_number: int) -> str:
     return f"{string_code[:4]} {string_code[4:6]}** **** {string_code[-4:]}"
 
 
-print(get_mask_card_number(7000792289604528))
-
 
 def get_mask_account(card_number: int) -> str:
     """Функция возвращающая последнии 4 цифры номера карты"""
@@ -16,4 +14,3 @@ def get_mask_account(card_number: int) -> str:
     return f"**{string_code_2[-4:]}"
 
 
-print(get_mask_account(7000792289606361))
