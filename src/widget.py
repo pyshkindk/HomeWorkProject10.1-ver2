@@ -16,7 +16,7 @@ def mask_account_card(card: str) -> str:
         return get_mask_account(number_card)
 
 
-filter_card = mask_account_card("Maestro 7000792289606361")
+filter_card = mask_account_card("Счет 35383033474447895560")
 print(filter_card)
 
 
