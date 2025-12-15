@@ -14,3 +14,12 @@ def test_mask_account_card(card, expected):
     """Тестирует корректную работу функции mask_account_card с разными входными данными."""
     assert mask_account_card(card) == expected
 
+@pytest.mark.parametrize("date, expected", [
+    ("2024-03-11T02:26:18.671407", "11.03.2024"),
+    ("2020-01-06T10:23:87.123765", "06.01.2020"),
+    ("2015-10-25T15:46:34.216578", "25.10.2015"),
+])
+def test_get_date(date, expected):
+    """Тестирует преобразование даты."""
+    assert get_date(date) == expected
+
