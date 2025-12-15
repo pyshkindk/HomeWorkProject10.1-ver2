@@ -6,7 +6,6 @@ def get_mask_card_number(card_number: str) -> str:
     return f"{string_code[:4]} {string_code[4:6]}** **** {string_code[-4:]}"
 
 
-
 def get_mask_account(card_number: str) -> str:
     """Функция возвращающая последнии 4 цифры номера карты"""
 
@@ -14,3 +13,7 @@ def get_mask_account(card_number: str) -> str:
     return f"**{string_code_2[-4:]}"
 
 
+if __name__ == "__main__":
+
+    print(get_mask_card_number("7000792289606361"))
+    print(get_mask_account("7000792289606361"))
