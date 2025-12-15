@@ -21,9 +21,3 @@ def get_date(date: str) -> str:
     """Функция возвращающая дату"""
     date_filter = "".join(re.findall(r"\d{4}-\d{2}-\d{2}", date))
     return f"{date_filter[-2:]}.{date_filter[5:7]}.{date_filter[:4]}"
-
-
-if __name__ == "__main__":
-
-    print(mask_account_card("Счет 64686473678894779589"))
-    print(get_date("2024-03-11T02:26:18.671407"))
