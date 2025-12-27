@@ -5,7 +5,8 @@ from typing import Any, Generator, Optional
 def filter_by_currency(transactions: list, currency: str) -> filter[Any]:
     """Функция принимающая на вход список словарей, представляющих транзакции и
     генерирует транзакции по заданной валюты."""
-
+    if not transactions:
+        raise ValueError("Список транзакций пуст")
     filtred_curency = filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions)
     return filtred_curency
 
