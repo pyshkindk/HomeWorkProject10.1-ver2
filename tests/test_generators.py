@@ -40,11 +40,13 @@ def test_transaction_descriptions(test_list_of_transactions):
     ],
 )
 def test_card_number_generator_1(start, stop, expected_cards):
+    """Проверка работы генератора номера карты через параметризацию"""
     result = list(card_number_generator(start, stop))
     assert result == expected_cards
 
 
 def test_card_number_generator_2():
+    """Проверка работы генератора номера через вывзов отдельных элементов"""
     result = card_number_generator(1, 5)
     assert next(result) == "0000 0000 0000 0001"
     assert next(result) == "0000 0000 0000 0002"
