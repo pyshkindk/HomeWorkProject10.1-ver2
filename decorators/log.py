@@ -1,4 +1,3 @@
-import time
 from functools import wraps
 from typing import Any, Callable, Optional
 
@@ -12,14 +11,12 @@ def log(filename: Optional[str] = None) -> Any:
         @wraps(function)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
-                start_time = time.time()
                 result = function(*args, **kwargs)
-                end_time = time.time()
-                final_message = f"{function.__name__} ok, result - {end_time - start_time}, {result}"
+                final_message = f"Начало выполнения функции\n{function.__name__} ok\nОкончание выполнения функции"
                 output(final_message, filename)
                 return result
             except Exception as e:
-                error_message = f"{function.__name__} Error: {type(e).__name__}, {args}, {kwargs}"
+                error_message = f"{function.__name__} Error: {type(e).__name__}. Inputs: {args}, {kwargs}"
                 output(error_message, filename)
                 raise e
 
@@ -31,7 +28,15 @@ def log(filename: Optional[str] = None) -> Any:
 def output(message: str, filename: Optional[str]) -> None:
     """Функция для вывода сообщений либо в файл, либо в консоль."""
     if filename is not None:
-        with open(filename, "a") as file:
+        with open(filename, "a", encoding="utf--8") as file:
             file.write(message + "\n")
     else:
         print(message)
+
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+
+my_function(1, 2)
