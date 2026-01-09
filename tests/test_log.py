@@ -1,16 +1,16 @@
 import pytest
 
-from decorators.log import log
+from decorators.log import log, my_function
 
 
-def test_log(capsys):
+def test_log_correct(capsys):
     """Проверка на корректность работы декоратора"""
 
     @log()
-    def function():
-        function()
-        result = capsys.readouterr()
-        assert result.out == "Success"
+    def success_function():
+        success_function()
+        captured = capsys.readouterr()
+        assert "Начало выполнения функции\nmy_function ok\nОкончание выполнения функции" in captured.out
 
 
 def test_log_error():
@@ -22,3 +22,19 @@ def test_log_error():
 
     with pytest.raises(Exception):
         fail_function()
+
+
+def test_log_2():
+    """Проверка создание файла и выводимой информации"""
+
+    @log(filename=None)
+    def function():
+        function()
+        result = my_function
+        assert result == 3
+
+    @log(filename="mylog.txt")
+    def test_log():
+        with open("mylog.txt", "r", encoding="utf--8") as file:
+            log_content = file.read()
+        assert "Начало выполнения функции\nmy_function ok\nОкончание выполнения функции" in log_content
