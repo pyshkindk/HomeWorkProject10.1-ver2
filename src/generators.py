@@ -1,8 +1,8 @@
 from itertools import count
-from typing import Any, Generator, Optional
+from typing import Any, Generator, Iterator, Optional
 
 
-def filter_by_currency(transactions: list, currency: str) -> filter[Any]:
+def filter_by_currency(transactions: list, currency: str) -> Iterator[Any]:
     """Функция принимающая на вход список словарей, представляющих транзакции и
     генерирует транзакции по заданной валюты."""
     if not transactions:
